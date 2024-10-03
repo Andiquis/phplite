@@ -35,3 +35,18 @@ http://localhost:8000
 
 - Asegúrate de tener una conexión de red adecuada para acceder a la aplicación.
 - Para detener el servidor, puedes usar Ctrl + C en la terminal donde lo ejecutaste.
+
+
+### Opcional
+
+  -Este paso es para automatizar el encendido del servidor de manera automatica en la vamos a configurar el archivo de arranque de termux para que el servidor arranque al momento de entrar a termux
+  $ cd $HOME
+  $ cd ..
+  $ cd usr
+  $ cd etc
+  $ nano bash.bashrc
+  En el final del codigo de bash.bashrc adicionar las siguientes lineas de codigo
+    - cd $HOME
+    - cd phplite
+    - php -Slocalhost:8000
+  Guarda el archivo y reinicia termux
