@@ -4,6 +4,8 @@
 
 Esta es una aplicación web diseñada específicamente para ejecutarse en navegadores móviles o en Termux. Es una solución ligera y eficiente para gestionar tu base de datos SQLite de manera fácil y accesible.
 
+## advertencia hay mejoras en el codigo start.sh este readme esta desactualizado
+
 ## Requisitos
 
 Asegúrate de tener Termux instalado en tu dispositivo Android.
@@ -32,6 +34,7 @@ http://localhost:8000
 - Para detener el servidor, puedes usar Ctrl + C en la terminal donde lo ejecutaste.
 
 
+
 ### Opcional
 
   -Este paso es para automatizar el encendido del servidor de manera automatica en la vamos a configurar el archivo de arranque de termux para que el servidor arranque al momento de entrar a termux
@@ -55,3 +58,5 @@ php bash start.sh
 ifconfig
 ```
 en el navegador 192.168.#.#:8000
+
+
