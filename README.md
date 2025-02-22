@@ -4,7 +4,7 @@
 
 Esta es una aplicación web diseñada específicamente para ejecutarse en navegadores móviles o en Termux. Es una solución ligera y eficiente para gestionar tu base de datos SQLite de manera fácil y accesible.
 
-## advertencia hay mejoras en el codigo start.sh este readme esta desactualizado
+## advertencia hay mejoras en el codigo start.sh este README.md esta desactualizado
 
 ## Requisitos
 
