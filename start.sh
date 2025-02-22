@@ -1,4 +1,3 @@
-
 #!/bin/bash
 
 # ==============================
@@ -10,7 +9,7 @@ FILE_PATH="$PREFIX/etc/bash.bashrc"
 # Reemplazar el contenido de bash.bashrc con una nueva configuración
 CONFIG_BASH=$(cat <<'EOF'
 # =============================#
-#      🌟 ANDI SYSTEM 🌟      #
+#      ✯ ANDI SYSTEM ✯      #
 # =============================#
 
 # Configuración del historial de comandos
@@ -28,44 +27,42 @@ echo -e "\033[1;36m========================================\033[0m"
 echo -e "\033[1;33m        🚀 BIENVENIDO A LISTA_X 🚀        \033[0m"
 echo -e "\033[1;36m========================================\033[0m"
 
-echo -e "\033[1;34m █████╗ ███╗   ██╗██████╗ ██╗ \033[0m"
-echo -e "\033[1;34m██╔══██╗████╗  ██║██╔══██╗██║ \033[0m"
-echo -e "\033[1;34m███████║██╔██╗ ██║██║  ██║██║ \033[0m"
-echo -e "\033[1;34m██╔══██║██║╚██╗██║██║  ██║██║ \033[0m"
-echo -e "\033[1;34m██║  ██║██║ ╚████║██████╔╝███████╗ \033[0m"
-echo -e "\033[1;34m╚═╝  ╚═╝╚═╝  ╚═══╝╚═════╝ ╚══════╝ \033[0m"
-
 echo -e "\n\033[1;32m🌟 Proyecto: \033[0mLista X"
 echo -e "\033[1;32m👤 Autor: \033[0mAndi"
 echo -e "\033[1;32m🔌 Puerto usado: \033[0m8002"
-echo -e "\033[1;32m📝 Descripción: \033[0mSistema de administracion de listas"
+echo -e "\033[1;32m🗜 Descripción: \033[0mSistema de administracion de listas"
 echo -e "\033[1;32m🟢 Estado: \033[0mServidor corriendo"
 
-# Verificar instalación de PHP y SQLite3
-if command -v php >/dev/null 2>&1 && command -v sqlite3 >/dev/null 2>&1; then
-    echo -e "\033[1;32m✔ PHP y SQLite3 están instalados.\033[0m"
-else
-    echo -e "\033[1;31m✖ ERROR: PHP y SQLite3 no están instalados. Instálalos para continuar.\033[0m"
+# Verificar e instalar PHP y SQLite3 si es necesario
+if ! command -v php >/dev/null 2>&1; then
+    echo -e "\033[1;31m✖ PHP no encontrado. Instalando...\033[0m"
+    pkg update && pkg install -y php
 fi
+
+if ! command -v sqlite >/dev/null 2>&1; then
+    echo -e "\033[1;31m✖ SQLite no encontrado. Instalando...\033[0m"
+    pkg update && pkg install -y sqlite
+fi
+
+echo -e "\033[1;32m✔ PHP y SQLite3 están instalados.\033[0m"
 
 # Verificar existencia de la base de datos y crearla si no existe
 DB_PATH="$HOME/phplite/acciones.db"
 if [ ! -f "$DB_PATH" ]; then
-    echo -e "\033[1;36m📂 Creando la base de datos vocabulario.db...\033[0m"
+    echo -e "\033[1;36m📂 Creando la base de datos acciones.db...\033[0m"
     php "$HOME/phplite/db.php"
     echo -e "\033[1;32m✔ Base de datos creada.\033[0m"
 else
     echo -e "\033[1;34m✔ Base de datos encontrada.\033[0m"
 fi
 
-# Dar permisos de ejecución a archivos en cingles
+# Dar permisos de ejecución a archivos en phplite
 chmod +x $HOME/phplite/*
 echo -e "\033[1;32m✔ Permisos de ejecución añadidos.\033[0m"
 
 # Iniciar el servidor PHP automáticamente
 cd $HOME/phplite || exit
 php -S 0.0.0.0:8002 -t $HOME/phplite &
-
 
 # Abrir la URL en Google Chrome
 am start -n com.android.chrome/com.google.android.apps.chrome.Main -d http://localhost:8002/index.php &
